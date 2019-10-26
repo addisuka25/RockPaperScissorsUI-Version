@@ -1,0 +1,31 @@
+
+body{
+    
+}
+#container {
+    width: 800px;
+    background-color: rosybrown;
+    margin: 0 auto;
+}
+
+.scoreBoard {
+    background-color: aqua;
+
+}
+
+.playerVsComputerChoice {
+    background-color: aquamarine;
+}
+
+.statusMessage {
+    background-color: blue;
+}
+
+.displayWeapons {
+    background-color: brown;
+}
+.scoreBoard, .playerVsComputerChoice, .statusMessage, .displayWeapons {
+    width: 600px;
+    margin: 10px auto;
+    height: 100px;
+}
