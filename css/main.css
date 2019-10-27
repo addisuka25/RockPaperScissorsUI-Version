@@ -3,72 +3,115 @@ body{
     
 }
 #container {
-    width: 800px;
-    background-color: rosybrown;
+    max-width: 800px;
+    background-color: #4b8e8d;
     margin: 0 auto;
     padding: 10px 0;
 }
 
 .scoreBoard {
-    background-color: aqua;
-    padding-top: 10px;
+    padding-top: 15px;
+    border: 2px dotted #f6c89f;
 }
 
 .scoreBoard h4 {
     font-size: 40px;
+    font-weight: bold; 
     text-align: center;
 }
 
 .scoreBoard .scoreFigures {
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
     font-size: 30px;
+   
 }
 
 .playerScore, .computerScore {
-    margin: 0 20px;
+    margin: 0 40px;
+    font-weight: bold;
 }
 
 .playerVsComputerChoice {
-    background-color: aquamarine;
     padding-top: 10px;
-    font-size: 30px;
     text-align: center;
+    border: 2px dotted #f6c89f;
 }
 
 
 
 .player, .Vs, .computer {
     display: inline-block;
-    width: 150px;
-    background-color: brown;
+    margin-right: 20px;
+    width: 110px;
 } 
 
 
-.statusMessage {
-    background-color: blue;
+
+
+.player h3, .computer h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
     font-size: 30px;
-    text-align: center;
+    
 }
 
-.statusMessage p {
-    padding-top: 10px;
+
+
+.statusMessage {
+    padding-top: 20px;
+    font-size: 40px;
+    text-align: center;
+    border: 2px dotted #f6c89f;
+    width: 600px;
+    margin: 10px auto;
+    height: 70px;
 }
+
+
 
 .displayWeapons {
-    background-color: brown;
+
     padding-top: 10px;
     font-size: 30px;
     text-align: center;
+    border: 2px dotted #f6c89f;
+
+}
+
+.displayWeapons h3 {
+
+    
+    font-size: 40px;
+    color: #ffe7d1;
+}
+
+.displayWeapons button{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: #396362;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.displayWeapons button:hover{
+ 
+    background-color: #ffe7d1;
+    color: black;
+    
+    
 }
 
 .displayWraper #rock, #paper, #scissors {
-   background-color: blue;
    display: inline-block;
    width: 150px;
+   margin-right: 10px;
+
 }
-.scoreBoard, .playerVsComputerChoice, .statusMessage, .displayWeapons {
+
+.scoreBoard, .playerVsComputerChoice, .displayWeapons {
     width: 600px;
     margin: 10px auto;
-    height: 100px;
+    height: 150px;
 }
