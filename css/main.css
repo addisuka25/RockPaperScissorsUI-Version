@@ -60,7 +60,7 @@ body{
 
 .statusMessage {
     padding-top: 20px;
-    font-size: 40px;
+    font-size: 36px;
     text-align: center;
     border: 2px dotted #f6c89f;
     width: 600px;
@@ -103,15 +103,31 @@ body{
     
 }
 
-.displayWraper #rock, #paper, #scissors {
+.displayWraper #rock, #paper, #scissors , #btnReplay{
    display: inline-block;
    width: 150px;
    margin-right: 10px;
 
 }
 
+.wrapperHide{
+    display: none;
+}
+
+
+/**
+.replay{
+    display: block;
+}
+
+*/
+
 .scoreBoard, .playerVsComputerChoice, .displayWeapons {
     width: 600px;
     margin: 10px auto;
     height: 150px;
+}
+
+.won {
+    border-radius: 20%;
 }
