@@ -1,30 +1,126 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 31px;
+    position: relative;
+}
 
-body{
-    
+.header {
+
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-bottom: #ccc 3px solid;
+    min-width:532px;
 }
-#container {
-    max-width: 800px;
-    background-color: #4b8e8d;
-    margin: 0 auto;
-    padding: 10px 0;
+
+.header span{
+    font-style: italic;
+font-size: 15px;
 }
+
+.startGame{
+    height: 90px;
+    background-color: #296e9a;
+    margin: 100px auto;
+    max-width: 280px;
+    min-width: 240px;
+    height: 109px;
+    border-radius: 30px;
+
+}
+
+.startGame div:hover{
+    background-color: #c8c8c8;
+    cursor: pointer;
+}
+
+.startGame div {
+    position: absolute;
+    border-radius: 30px;
+    padding: 15px 30px 15px 30px;
+    border-radius: 30px;
+    background-color: white;
+    width: 173px;
+    margin: 24px;
+
+}
+
+.roundPlayContainer{
+    display: none;
+    margin: 56px 0px 0px 0px;
+}
+
+
+.showMesageContainer{
+    display: none;
+}
+
+.container {
+    display: none;
+    margin: 30px auto;
+    background-color: #999999;
+    height: 580px;
+    min-width: 500px;
+    max-width: 600px;
+    padding: 10px;
+}
+
+
 
 .scoreBoard {
-    padding-top: 15px;
-    border: 2px dotted #f6c89f;
+    margin-bottom: 10px;
+   padding-top: 15px;
+   border: 5px solid #fff;
+   font-weight: bold; 
 }
+
+
 
 .scoreBoard h4 {
     font-size: 40px;
-    font-weight: bold; 
     text-align: center;
 }
 
-.scoreBoard .scoreFigures {
-    margin-top: 20px;
+
+
+
+.scoreBoard .scoreFigures, .playerVsComputerChoice div {
+
     text-align: center;
     font-size: 30px;
+    margin-bottom: 15px;
+    margin: 10px;
+}
+
+
+
+.statusMessage {
+    padding-top: 20px;
+    margin: 10px auto;
+    height: 70px;
+    border: 5px solid #fff;
+
+}
+
+
+
+.displayWeapons {
+
+    padding-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    border: 5px solid #fff;
+    height: 120px;
    
+    font-weight: bold;
+}
+
+.displayWeapons h3{
+    color:#bb3c3c;
+}
+
+.displayWeapons .displayWraper{
+    margin-top: 15px;
 }
 
 .playerScore, .computerScore {
@@ -33,9 +129,9 @@ body{
 }
 
 .playerVsComputerChoice {
-    padding-top: 10px;
+ 
     text-align: center;
-    border: 2px dotted #f6c89f;
+    border: 5px solid #fff;
 }
 
 
@@ -58,69 +154,47 @@ body{
 
 
 
-.statusMessage {
-    padding-top: 20px;
-    font-size: 36px;
-    text-align: center;
-    border: 2px dotted #f6c89f;
-    width: 600px;
-    margin: 10px auto;
-    height: 70px;
-}
-
-
-
-.displayWeapons {
-
-    padding-top: 10px;
-    font-size: 30px;
-    text-align: center;
-    border: 2px dotted #f6c89f;
-
-}
-
-.displayWeapons h3 {
-
-    
-    font-size: 40px;
-    color: #ffe7d1;
-}
-
 .displayWeapons button{
     margin-top: 10px;
     width: 100%;
     height: 50px;
-    background-color: #396362;
+    background-color: #296e9a;
     color: #ffffff;
-    font-weight: bold;
+    border-radius: 5px;
 }
 
 .displayWeapons button:hover{
  
-    background-color: #ffe7d1;
-    color: black;
-    
+    background-color: #213C68;
+    color: #bb3c3c;
+   
     
 }
 
-.displayWraper #rock, #paper, #scissors , #btnReplay{
+.displayWraper #rock, #paper, #scissor , #btnReplay{
    display: inline-block;
    width: 150px;
    margin-right: 10px;
 
 }
 
+/*
+
+
+
+
+
+
 .wrapperHide{
     display: none;
 }
 
 
-/**
+
 .replay{
     display: block;
 }
 
-*/
 
 .scoreBoard, .playerVsComputerChoice, .displayWeapons {
     width: 600px;
@@ -130,4 +204,4 @@ body{
 
 .won {
     border-radius: 20%;
-}
+} */

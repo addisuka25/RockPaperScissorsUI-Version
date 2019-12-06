@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rock Paper Scissors UI</title>
+        <title>Rock Paper Scissors Game</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     </head>
+
     <body>
-        <div id="container">
+
+        <div class="header">
+                
+            <h1>Rock Paper Scissors UI Version</h1>
+            <p>Play with passion. <span>Developer: George Suka</span></p>
+            <div class="roundPlayContainer" >
+                    Round: <span class="rounds"></span>
+             </div>
+        </div>
+
+         <!-- Start Game Button-->
+        <div class="startGame">
+                <div > Start Game</div>
+        </div>
+
+
+        <!-- contianer start-->
+        <div class="container">
 
             <!--Score Board start from here -->
-            <div class="scoreBoard">
-                <h4>Score</h4>
-                <div class="scoreFigures">
-                    <span class="playerScore">0</span>:<span class="computerScore">0</span>
-                </div>
-            </div>
-            <!-- end of score board-->
+        <div class="scoreBoard">
+            
+            <h2>Score Board</h2>
 
-            <!-- Display Player and Computer Choices-->
-            <div class="playerVsComputerChoice">
+            <div class="scoreFigures">
+                <span class="playerScore">0</span>:<span class="computerScore">0</span>
+            </div>
+        </div>
+                <!-- end of score board-->
+
+         <!-- Display Player and Computer Choices-->
+         <div class="playerVsComputerChoice">
                 <div >
                 <div class="player">
                     <h3>You</h3>
@@ -36,34 +56,36 @@
             </div>
             <!-- end of computer Vs Player-->
 
-            <!-- Display Status of the Game ..who wins?-->
-            <div class="statusMessage">
-                <span>No Win Yet</span>
-            </div>
-            <!-- end of status message-->
 
-            <!-- Display Weapons-->
-            <div class="displayWeapons">
-                <h3>Choose Your Weapon</h3>
-                <div class="displayWraper">
-                    <div id="rock">
-                        <button id="btnRock">Rock</button>
-                    </div>
-                    <div id="paper">
-                        <button id="btnPaper">Paper</button>
-                    </div>
-                    <div id="scissors">
-                        <button id="btnScissors">Scissors</button>
-                    </div>
-                    <div class="wrapperHide">
-                        <button id="btnReplay">Scissors</button>
-                    </div>
-                </div>
-            </div>
-            <!-- end of weapon display-->
-
+         <!-- Display Status of the Game ..who wins?-->
+        <div class="statusMessage">
+            <span>No Win Yet</span>
         </div>
+        <!-- end of status message-->
+                
+        <!-- Display Weapons-->
+        <div class="displayWeapons">
 
-        <script src="js/main.js" ></script>
+            <h3>Choose Your Weapon</h3>
+
+            <div class="displayWraper">
+                <div id="rock">
+                    <button id="btnRock">Rock</button>
+                </div>
+                <div id="paper">
+                    <button id="btnPaper">Paper</button>
+                </div>
+                <div id="scissor">
+                    <button id="btnScissors">Scissor</button>
+                </div>
+                
+            </div>
+        </div>
+                            <!-- end of weapon display-->
+
+
+        </div> <!-- container end-->
+
+        <script src="js/main.js"></script>
     </body>
 </html>

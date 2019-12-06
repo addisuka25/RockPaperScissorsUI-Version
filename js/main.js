@@ -1,274 +1,201 @@
+let startGame = document.querySelector('.startGame');
+let gameContainer = document.querySelector('.container');
 let weapons = document.querySelectorAll('button');
 let playerWeaponChoiceImageDiv = document.querySelector('.player');
 let computerWeaponChoiceImageDiv = document.querySelector('.computer');
 let computerScore = document.querySelector('.computerScore');
 let playerScore = document.querySelector('.playerScore');
-
-let stustusMessage = document.querySelector('.statusMessage')
-let roundsPlay = 1;
-
+let statusMessage = document.querySelector('.statusMessage');
 let weaponImage = playerWeaponChoiceImageDiv.children[1];
 let weaponImageComputer = computerWeaponChoiceImageDiv.children[1];
-
-function getButtons(button){
-
-    button.addEventListener('click',(e) => {
-
-        if( roundsPlay != 6 ){
-        
-
-        let computerSelection = computerPlay();
-
-        switch (e.target.id + computerSelection) {
-            
-            case 'btnRock' + 'scissors':
-                    playerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/rock.png';
-                    weaponImageComputer.attributes.src.value = 'img/scissors.png';
-                    stustusMessage.children[0].innerHTML = `You Win! ${e.target.innerHTML} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
-                    roundsPlay++;
-                break;
-
-            case 'btnPaper' + 'rock':
-                    playerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/paper.png';
-                    weaponImageComputer.attributes.src.value = 'img/rock.png';
-                    stustusMessage.children[0].innerHTML = `You Win! ${e.target.innerHTML} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
-                    roundsPlay++;
-                break;
-
-            case 'btnScissors' + 'paper':
-                    playerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/scissors.png';
-                    weaponImageComputer.attributes.src.value = 'img/scissors.png';
-                    stustusMessage.children[0].innerHTML = `You Win! ${e.target.innerHTML} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
-                    roundsPlay++;
-                break;
-
-             
-
-            case 'btnScissors' + 'rock':
-                    computerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/scissors.png';
-                    weaponImageComputer.attributes.src.value = 'img/rock.png';
-                    stustusMessage.children[0].innerHTML = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beat ${e.target.innerHTML} `;
-                    roundsPlay++;
-                        break;
-            case 'btnRock' + 'paper':
-                    computerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/rock.png';
-                    weaponImageComputer.attributes.src.value = 'img/paper.png';    
-                    stustusMessage.children[0].innerHTML = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beat ${e.target.innerHTML} `;
-                    roundsPlay++;
-                    break;
-                
-            case 'btnPaper' + 'scissors':
-                    computerScore.innerHTML++;
-                    weaponImage.attributes.src.value = 'img/paper.png';
-                    weaponImageComputer.attributes.src.value = 'img/scissors.png';   
-                    stustusMessage.children[0].innerHTML = `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beat ${e.target.innerHTML} `;
-                    roundsPlay++;
-                    break;
-                              
-                        
-            case 'btnRock' + 'rock':
-                    weaponImage.attributes.src.value = 'img/rock.png';
-                    weaponImageComputer.attributes.src.value = 'img/rock.png'; 
-            
-                    stustusMessage.children[0].innerHTML = `Its a Draw ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Vs ${e.target.innerHTML} `;
-
-                    break;
-            case 'btnPaper' + 'paper':
-                    weaponImage.attributes.src.value = 'img/paper.png';
-                    weaponImageComputer.attributes.src.value = 'img/paper.png'; 
-                    stustusMessage.children[0].innerHTML = `Its a Draw ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Vs ${e.target.innerHTML} `;
-                    break;
-            case 'btnScissors' + 'scissors':
-                    weaponImage.attributes.src.value = 'img/scissors.png';
-                    weaponImageComputer.attributes.src.value = 'img/scissors.png'; 
-                    stustusMessage.children[0].innerHTML = `Its a Draw ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Vs ${e.target.innerHTML} `;
-
-                    break;
+let roundPlayContainer = document.querySelector('.roundPlayContainer');
+let roundsPlay = document.querySelector('.rounds');
 
 
-            default:
-                    console.log("Mi Ah NoBody")
-                break;
-        } 
 
+startGame.addEventListener('click',showGame);
 
-    weaponImage.classList.add('won');
+function showGame(){
+    this.style.display = "none";
+    gameContainer.style.display = "block";
+    roundPlayContainer.style.display = "block";
+    roundsPlay.innerHTML=0 ;
+    let newMessage = document.querySelector('body');
+    newMessage.lastChild.innerHTML="";
+}
 
+function hideGame(){
+    gameContainer.style.display = "none";
+    roundPlayContainer.style.display = "none";
+    startGame.style.display = "block";
+    startGame.children[0].innerHTML = "Replay";
     
-     
-    }else{
+    displayWinner();
 
-        let weaponDiv = document.querySelectorAll('button');
-    //    let replayDiv = document.querySelector('replay');
-      
-        weaponImage.attributes.src.value = 'img/question.png';
-        weaponImageComputer.attributes.src.value = 'img/question.png';
-        
-        weaponDiv.forEach(function(e){
-        e.style.display = 'none'
-        })
+    playerScore.innerHTML = 0;
+    computerScore.innerHTML = 0;
+    roundsPlay.innerHTML=0;
+}
 
-        /** 
-        replayDiv.classList.remove('wrapperHide');
-        replayDiv.classList.add('replay')
 
-        */
+function displayWinner(){
+    let body = document.querySelector('body');
+    let newMessage = document.createElement('h1');
+    let text = "";
 
-        if(playerScore > computerScore){
-            
-            stustusMessage.children[0].innerHTML = `Congratulations! You Won`;
-            
-         
-
-        }else{
-            stustusMessage.children[0].innerHTML = ` Sorry! Computer Won`;
-        }
+    if(playerScore.innerHTML > computerScore.innerHTML){
+        text = document.createTextNode(`Congratulations! You Won with ${playerScore.innerHTML} Points. Computer had ${computerScore.innerHTML} Point`);
+    }
+    else{
+        text = document.createTextNode(`Sorry! Computer Won with ${computerScore.innerHTML} Points. You had ${playerScore.innerHTML} Point`);
+    }
+    newMessage.appendChild(text);
+    body.appendChild(newMessage);
     
-} // end of if condition
+}
 
 
-}) // end of event
-
- } 
-/** else {
-
-    weapons.forEach(function (e) {
-        console.log(e.target);
-    });
-
-}*/
-
-
+// Computer Make Choice a Randomly.
 
 function computerPlay() {
 
-    let weaponToChoose = [ 'rock', 'paper', 'scissors' ];
+    let weaponToChoose = [ 'rock', 'paper', 'scissor' ];
     weaponImageComputer.classList.add('won');
     
    return  weaponToChoose[Math.floor( Math.random() * weaponToChoose.length )] ;
+  
+}
 
+
+// Get click buttons on the page and attach event to them
+
+function getPlayerSelection(){
+
+    let playerSelection = "";
    
-  
 
-  
-}
+    weapons.forEach ( (button) => {
+        
+            button.addEventListener('click',(e) => {
 
+                playerSelection = e.target.innerHTML.toLowerCase();
 
-weapons.forEach(getButtons);
+                if(roundsPlay.innerHTML > 4){
 
+                  return  hideGame();
 
-/** 
-function game() {
+                } else{
+                    playerVsComputer(playerSelection,computerPlay());
+                 
+                }
+            
+                
+            });
+            
+            
+        }
+    );
     
-
-    let computerScore = 0;
-    let playerScore = 0;
-    let roundsPlay = 1;
-
-    while (roundsPlay != 6 ) {
-        
-       
-        
-// this function return either rock, paper or scissors
-
-function computerPlay() {
-
-    let weaponToChoose = [ 'rock', 'paper', 'scissors' ];
-
-   return  weaponToChoose[Math.floor( Math.random() * weaponToChoose.length )] ;
-
+    
 }
 
+getPlayerSelection();
+//console.log(playerSelection);
 
-// this function play only one round
 
-function playRound(playerSelection, computerSelection) {
 
+
+
+// Player Selection and Computer Selection Test
+
+function playerVsComputer(playerSelection,computerSelection){
+    
+   
 
     switch (playerSelection + computerSelection) {
+            
+        case 'rock' + 'scissor':
+                playerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
+                ++roundsPlay.innerHTML;
+            break;
 
-        case 'rock' + 'scissors':
-                playerScore ++;
-                console.log( `You Win! YourWeapon ${playerSelection} Beats Computer'sWeapon ${computerSelection}` );
-                
-                break;
-
+        case 'scissor' + 'paper':
+                playerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;              // roundsPlay++;
+                ++roundsPlay.innerHTML;
+            break;
 
         case 'paper' + 'rock':
-                playerScore ++;
-              
-                console.log( `You Win! YourWeapon ${playerSelection} Beats Computer'sWeapon ${computerSelection}` );
-                break;
-
-
-        case 'scissors' + 'paper':
-                playerScore ++;
-             
-                console.log( `You Win! YourWeapon ${playerSelection} Beats Computer'sWeapon ${computerSelection}` );
-                
-                break;
-            
-        
-
-        case 'scissors' + 'rock':
-                computerScore ++;
-            
-                console.log( `You Lose! YourWeapon ${playerSelection} Loses To Computer'sWeapon ${computerSelection}` );
-                break;
-
-        case 'rock' + 'paper':
-                computerScore ++;
-                
-                console.log( `You Lose! YourWeapon ${playerSelection} Loses To Computer'sWeapon ${computerSelection}` );
-                break;
-
-        case 'paper' + 'scissors':
-                computerScore ++;
-              
-                console.log( `You Lose! YourWeapon ${playerSelection} Loses To Computer'sWeapon ${computerSelection}` );
-                break;
-              
-        
-        case 'rock' + 'rock':
-        case 'paper' + 'paper':
-        case 'scissors' + 'scissors':
-
-               
-                console.log( `Its a Draw! YourWeapon ${playerSelection} Vs Computer'sWeapon ${computerSelection}` );
-                break;
-    
-        default:
-                console.log(playerSelection + " " + computerSelection);
+                playerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} Beat ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
+                ++roundsPlay.innerHTML;
             break;
-    }
 
-  
+         
 
+        case 'paper' + 'paper':
+                
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Its a Draw!! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} Vs ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} `;
+                
+            break;
+
+        case 'rock' + 'rock':
+             
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Its a Draw! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Vs ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} `;
+                
+                break;
+            
+        case 'scissor' + 'scissor':
+
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Its a Draw! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Vs ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} `;
+            
+                break;
+                          
+                    
+        case 'rock' + 'paper':
+                computerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Computer Wins! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beats ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} `;
+                ++roundsPlay.innerHTML;
+                break;
+
+        case 'paper' + 'scissor':
+                computerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Computer Wins! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beats ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} `;
+                ++roundsPlay.innerHTML;
+                break;
+
+        case 'scissor' + 'rock':
+                computerScore.innerHTML++;
+                weaponImage.attributes.src.value = `img/${playerSelection}.png`;
+                weaponImageComputer.attributes.src.value = `img/${computerSelection}.png`;
+                statusMessage.children[0].innerHTML =`Computer Wins! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} Beats ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} `;
+                ++roundsPlay.innerHTML;
+                break;
+
+
+        default:
+                console.log("Mi Ah NoBody")
+                console.log(playerSelection  + computerSelection);   
+            break;
+    } 
 }
 
 
-        
-        const playerSelection = prompt("Choose Your Weapon :-  Rock Paper or Scissors ").toLowerCase();
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-
-        roundsPlay ++;
-
-        console.log(`Rounds: ${roundsPlay}  Computer Score: ${computerScore}  Player Score: ${playerScore}`)
-    }
-
-    
-
-    
-
-}
-
-game();
-      
-*/
 
